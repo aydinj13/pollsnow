@@ -4,6 +4,9 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight, Dog, Dribbble, Flag, ThumbsUp, Vote } from "lucide-react";
 import { cn } from "@/lib/utils"
 import { useRouter } from "next/navigation"
+import { UserButton } from "@clerk/nextjs"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const tools = [
     {
@@ -48,7 +51,11 @@ const DashboardPage = () => {
     const router = useRouter()
 
     return (
+        
         <div>
+            <div className="h-screen">
+            <UserButton afterSignOutUrl="/"/>
+            
         <div className="mb-8 space-y-4">
             <h2 className="text-2xl md:text-4xl font-bold text-center mt-5">
                 Welcome to Polls Now
@@ -76,6 +83,10 @@ const DashboardPage = () => {
                 </Card>
             ))}
         </div>
+        </div>
+        <Link href="/login">
+        <Button className="">Log In</Button>
+        </Link>
         </div>
     )
 }

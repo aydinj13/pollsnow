@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { toast } from "sonner"
+import { useState } from "react"
  
 export default function Gop2024() {
 
@@ -77,6 +78,11 @@ export default function Gop2024() {
     { value: "wyoming", label: "Wyoming" },
       ];
 
+     const [votes, setVotes] = useState(0)
+
+     const handleClick1 = () => {
+        setVotes(votes + 1)
+     }
 
   return (
     <Card className="w-[350px]">
@@ -121,14 +127,21 @@ export default function Gop2024() {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button onClick={() => 
-            toast("Thank you!! 🎉", {
-                description: "We appreciate your support."
-        })
+            //toast("Thank you!! 🎉", {
+                //description: "We appreciate your support."
+        //}),
+        handleClick1()
+        
+
     }
     >
         Confirm
         </Button>
+        <p>
+          {votes}
+        </p>
       </CardFooter>
     </Card>
+    
   )
 }
